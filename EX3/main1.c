@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 int main() {
     int i = 16;
     if (i & (i-1)) {
