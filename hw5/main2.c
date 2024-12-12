@@ -1,21 +1,26 @@
 #include <stdio.h>
-#include <math.h>
 
 int main() {
-    double pi = 0.0;
-    double term;
+    double pi = 4.0;
+    int flog = 1;
     int x = 0;
-    double target = 3.14159;
-    for (int i = 0;; i++) {
-        term = pow(-1, i) * (4.0 / (2 * i + 1));
-        pi += term;
-        x++;
-        double y = fabs(pi - target);
-        if (y < 0.00001) {
+    long ipi = 0;
+    
+    for (int i = 3; i < 1000000; i+=2) {
+        if (flog == 0) {
+            pi += (4.0 / i);
+            flog ++;
+        }
+        else {
+            pi -= (4.0 / i);
+            flog --;
+        }
+        ipi = pi * 100000;
+        if (ipi == 314159) {
+            x = i;
             break;
         }
     }
-    printf("最小x為 = %d\n", x);
-    printf("PI = %.5f\n", pi);
+    printf("%d %.5f", x, pi);
     return 0;
 }
